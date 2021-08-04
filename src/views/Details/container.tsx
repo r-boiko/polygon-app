@@ -7,11 +7,15 @@ import DetailsComponent from "./component";
 
 export interface Props {
   selectedTicker: string;
+  setSelectedTicker: any;
 }
 
-// FIX-ME: @ts-nocheck
-const Details = ({ selectedTicker }: Props) => {
-  const tickerData = useTickerDetails(selectedTicker);
+const Details = ({ selectedTicker, setSelectedTicker }: Props) => {
+  let tickerData = useTickerDetails(selectedTicker);
+
+  const handleSelectTicker = (ticker: string) => () => {
+    setSelectedTicker(ticker);
+  }
 
   if(!tickerData) {
     return <Empty />;
@@ -21,7 +25,12 @@ const Details = ({ selectedTicker }: Props) => {
     return <Error message="No Results Found" />;
   }
 
-  return <DetailsComponent {...tickerData} />;
+  return (
+    <DetailsComponent
+      {...tickerData}
+      onSelectTicker={handleSelectTicker}
+    />
+  );
 };
 
 export default Details;

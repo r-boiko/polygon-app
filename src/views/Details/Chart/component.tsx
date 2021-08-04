@@ -8,7 +8,6 @@ interface Props {
   symbol: string;
 }
 
-// FIX-ME: @ts-nocheck
 const ChartComponent = ({ symbol }: Props) => {
   const { results = [] } = useTickerChart(symbol);
   const data = results.map(e => ({

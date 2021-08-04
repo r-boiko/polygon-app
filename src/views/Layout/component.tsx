@@ -38,7 +38,10 @@ const LayoutComponent = () => {
         })}
       >
         <div className={styles.drawerHeader} />
-        <Details selectedTicker={selectedTicker} />
+        <Details
+          selectedTicker={selectedTicker}
+          setSelectedTicker={setSelectedTicker}
+        />
       </main>
     </div>
   );

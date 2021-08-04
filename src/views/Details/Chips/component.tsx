@@ -8,10 +8,10 @@ interface Props {
   title: string;
   items: [];
   color: any;
+  onClick?: any;
 }
 
-// FIX-ME: color type
-const ChipsComponent = ({ title, items, color }: Props) => {
+const ChipsComponent = ({ title, items, color, onClick }: Props) => {
   const styles = useStyles();
 
   return items.length === 0
@@ -28,6 +28,7 @@ const ChipsComponent = ({ title, items, color }: Props) => {
               color={color}
               key={el}
               label={el}
+              onClick={onClick && onClick(el)}
             />
           ))}
         </div>

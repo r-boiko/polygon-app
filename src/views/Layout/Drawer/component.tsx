@@ -14,7 +14,6 @@ interface Props {
   onDrawerToggle: any
 }
 
-// FIX-ME: onDrawerToggle type
 const DrawerComponent = ({ open, onDrawerToggle }: Props) => {
   const styles = useStyles();
   const globalStyles = useGlobalStyles();

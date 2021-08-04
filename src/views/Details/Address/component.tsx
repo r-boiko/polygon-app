@@ -1,5 +1,6 @@
 import React from 'react';
 import Typography from "@material-ui/core/Typography";
+import NumberFormat from 'react-number-format';
 
 interface Props {
   hq_address: string;
@@ -17,7 +18,13 @@ const AddressComponent = ({
     <Typography variant="body2" style={{ textTransform: "uppercase" }}>
       {country}
     </Typography>
-    <Typography variant="body2">{phone}</Typography>
+    <Typography variant="body2">
+      <NumberFormat
+        value={phone}
+        displayType='text'
+        format="+# (###) ###-####"
+      />
+    </Typography>
   </>
 );
 

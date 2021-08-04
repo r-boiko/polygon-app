@@ -16,7 +16,6 @@ interface Props {
   setSelectedTicker: any;
 }
 
-// FIX-ME: onDrawerToggle, setSelectedTicker types
 const AppBarComponent = ({ open, onDrawerToggle, setSelectedTicker }: Props) => {
   const styles = useStyles();
   const globalStyles = useGlobalStyles();

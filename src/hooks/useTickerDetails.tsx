@@ -16,7 +16,7 @@ interface TickerDetails {
   description: string;
   similar: [];
   tags: [];
-  error: string,
+  error: string;
 }
 
 export const useTickerDetails = (ticker: string) => {
@@ -24,9 +24,7 @@ export const useTickerDetails = (ticker: string) => {
 
   useEffect(() => {
     if (ticker) {
-      getData(getTickerDetails(ticker)).then((data) =>
-        setData(data)
-      );
+      getData(getTickerDetails(ticker)).then((data) => setData(data));
     }
   }, [ticker]);
 

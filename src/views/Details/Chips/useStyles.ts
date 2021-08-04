@@ -4,6 +4,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     subTitle: {
       fontSize: "1rem",
+      marginTop: "15px",
       marginBottom: "14px",
       span: {
         fontSize: "1.2rem",
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
     tags: {
       height: "30px",
       borderRadius: "4px",
-      marginRight: "4px",
+      margin: "4px 4px 4px 0",
       color: "#ffffff",
       fontSize: "14px",
     },

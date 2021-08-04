@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import clsx from 'clsx';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { useState } from "react";
+import clsx from "clsx";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 import useStyles from "./useStyles";
 import useGlobalStyles from "../../hooks/useGlobalStyles";
@@ -13,38 +13,22 @@ const LayoutComponent = () => {
   const globalStyles = useGlobalStyles();
   const styles = useStyles();
 
-  const [open, setOpen] = React.useState(false);
   const [selectedTicker, setSelectedTicker] = useState("");
-
-  const handleDrawerToggle = () => {
-    setOpen(!open);
-  };
 
   return (
     <div className={globalStyles.dFlex}>
       <CssBaseline />
-      <AppBar
-        open={open}
-        onDrawerToggle={handleDrawerToggle}
-        setSelectedTicker={setSelectedTicker}
-      />
-      <Drawer
-        open={open}
-        onDrawerToggle={handleDrawerToggle}
-      />
-      <main
-        className={clsx(styles.content, {
-          [styles.contentShift]: open,
-        })}
-      >
+      <AppBar setSelectedTicker={setSelectedTicker} />
+      <Drawer />
+      <main className={clsx(styles.content)}>
         <div className={styles.drawerHeader} />
-        <Details
+        <Details 
           selectedTicker={selectedTicker}
           setSelectedTicker={setSelectedTicker}
-        />
+         />
       </main>
     </div>
   );
-}
+};
 
 export default LayoutComponent;

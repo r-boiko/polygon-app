@@ -13,16 +13,17 @@ interface Ticker {
   active: string;
   primaryExch: string;
   type: string;
-  codes: {[key: string]: string};
-  updated: string;  url: string;
+  codes: { [key: string]: string };
+  updated: string;
+  url: string;
 }
 
 export const useTickerSearch = (searchQuery: string) => {
   const [data, setData] = useState<Ticker[]>([]);
-  const debouncedValue = useDebounce<string>(searchQuery, 500)
+  const debouncedValue = useDebounce<string>(searchQuery, 500);
 
   useEffect(() => {
-    if(!searchQuery) return;
+    if (!searchQuery) return;
 
     getData(getTickerSearch(debouncedValue)).then((data) =>
       setData(data.results)

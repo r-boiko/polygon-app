@@ -4,11 +4,16 @@ import { useTickerSearch } from "../../../hooks/useTickerSearch";
 
 import SearchComponent from "./component";
 
-const Search = ({ setSelectedTicker }: { setSelectedTicker: (ticker: string) => void }) => {
+interface Props {
+  setSelectedTicker: (ticker: string) => void;
+}
+
+const Search = ({ setSelectedTicker }: Props) => {
   const [value, setValue] = useState("");
   const tickers = useTickerSearch(value);
 
-  const handleSetValue = (e: unknown) => setValue((e as React.ChangeEvent<{value: string}>).target.value);
+  const handleSetValue = (e: unknown) =>
+    setValue((e as React.ChangeEvent<{ value: string }>).target.value);
 
   const handleSelectTicker = (_: React.ChangeEvent<{}>, value: string) => {
     const ticker = value.split(" ")[0];

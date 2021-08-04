@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 
@@ -26,7 +26,7 @@ interface Props {
   description: string;
   similar: [];
   tags: [];
-  onSelectTicker: any;
+  onSelectTicker: (ticker: string) => () => void;
 }
 
 const DetailsComponent = ({
@@ -48,14 +48,12 @@ const DetailsComponent = ({
 
   return (
     <Container maxWidth="md" className={globalStyles.resetSpacing}>
-      <Title
-        symbol={symbol}
-        name={name}
-      />
+      <Title symbol={symbol} name={name} />
       <DailyPrice symbol={symbol} />
       <Chart symbol={symbol} />
-      <Grid container spacing={8}>
-        <Grid item xs={3}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={12}><strong>About {symbol}</strong></Grid>
+        <Grid item xs={6} md={3}>
           <CompanyInfo
             sector={sector}
             industry={industry}
@@ -63,29 +61,25 @@ const DetailsComponent = ({
             employees={employees}
           />
         </Grid>
-        <Grid item xs={3}>
-          <Address
-            hq_address={hq_address}
-            country={country}
-            phone={phone}
-          />
+        <Grid item xs={6} md={3}>
+          <Address hq_address={hq_address} country={country} phone={phone} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Map />
         </Grid>
       </Grid>
-      <Grid container spacing={8}>
-        <Grid item xs={6}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={6}>
           <Description description={description} />
         </Grid>
-        <Grid item xs={6}>
-          <Chips
+        <Grid item xs={12} md={6}>
+          <Chips 
             title="Related Stocks"
             items={similar}
-            color="primary"
-            onClick={onSelectTicker}
+            color="primary" 
+            onClick={onSelectTicker} 
           />
-          <Chips
+          <Chips 
             title="Tags"
             items={tags}
             color="secondary"

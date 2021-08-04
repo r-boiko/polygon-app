@@ -21,18 +21,19 @@ const SearchComponent = ({ onSetValue, getOptions, onSelectTicker }: Props) => {
       options={getOptions}
       onChange={onSelectTicker}
       classes={{
-        root: styles.fullWidth
+        root: styles.fullWidth,
       }}
       renderInput={(params) => (
         <TextField
           {...params}
           label="Search symbols or companies"
           margin="normal"
+          variant="outlined"
           InputProps={{ ...params.InputProps, type: "search" }}
         />
       )}
     />
-  )
+  );
 };
 
 export default SearchComponent;

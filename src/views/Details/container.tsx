@@ -7,30 +7,30 @@ import DetailsComponent from "./component";
 
 export interface Props {
   selectedTicker: string;
-  setSelectedTicker: any;
+  setSelectedTicker: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Details = ({ selectedTicker, setSelectedTicker }: Props) => {
-  let tickerData = useTickerDetails(selectedTicker);
+  const tickerData = useTickerDetails(selectedTicker);
 
   const handleSelectTicker = (ticker: string) => () => {
     setSelectedTicker(ticker);
   }
 
-  if(!tickerData) {
+  if (!tickerData) {
     return <Empty />;
   }
 
-  if(tickerData.error) {
+  if (tickerData.error) {
     return <Error message="No Results Found" />;
   }
 
   return (
-    <DetailsComponent
+    <DetailsComponent 
       {...tickerData}
       onSelectTicker={handleSelectTicker}
     />
-  );
+  )
 };
 
 export default Details;

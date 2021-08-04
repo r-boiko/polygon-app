@@ -1,4 +1,3 @@
-import React from 'react';
 import Typography from "@material-ui/core/Typography";
 
 interface Props {
@@ -8,12 +7,7 @@ interface Props {
   employees: number;
 }
 
-const CompanyInfoComponent = ({ 
-  sector,
-  industry,
-  ceo,
-  employees,
-}: Props) => (
+const CompanyInfoComponent = ({ sector, industry, ceo, employees }: Props) => (
   <>
     <Typography variant="body2">
       Sector: <strong>{sector}</strong>

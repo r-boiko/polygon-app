@@ -11,19 +11,25 @@ export const useTickerDailyPrice = (ticker: string) => {
 
   const handleFetchDailyPrice = useCallback(async () => {
     try {
-      const beforeDate = getFormatDate({ date: new Date(), extraDay:  -1 });
-      const prevDate = getFormatDate({ date: new Date(), extraDay:  -2 });
+      const beforeDate = getFormatDate({ date: new Date(), extraDay: -1 });
+      const prevDate = getFormatDate({ date: new Date(), extraDay: -2 });
 
-      const { close: currentClose } = await getData(getDailyOpenClose(ticker, beforeDate));
-      const { close: prevClose } = await getData(getDailyOpenClose(ticker, prevDate));
+      const { close: currentClose } = await getData(
+        getDailyOpenClose(ticker, beforeDate)
+      );
+      const { close: prevClose } = await getData(
+        getDailyOpenClose(ticker, prevDate)
+      );
 
       const endOfDayClosePrice = currentClose as unknown as number;
       const prevDayClosePrice = prevClose as unknown as number;
 
-      if(endOfDayClosePrice) {
+      if (endOfDayClosePrice) {
         setLastAvailablePrice(endOfDayClosePrice);
 
-        const priceChangeDifference = Number((endOfDayClosePrice - prevDayClosePrice).toFixed(1));
+        const priceChangeDifference = Number(
+          (endOfDayClosePrice - prevDayClosePrice).toFixed(1)
+        );
         const priceChangeDifferencePercent = Number(
           ((priceChangeDifference * 100) / endOfDayClosePrice).toFixed(1)
         );
@@ -34,19 +40,18 @@ export const useTickerDailyPrice = (ticker: string) => {
     } catch (e) {
       console.error(e);
     }
-  }, [ticker])
+  }, [ticker]);
 
   useEffect(() => {
     handleFetchDailyPrice();
   }, [handleFetchDailyPrice]);
 
-  return useMemo(() => ({
-    priceDifference,
-    changePercent,
-    lastAvailablePrice,
-  }), [
-    priceDifference,
-    changePercent,
-    lastAvailablePrice,
-  ]);
+  return useMemo(
+    () => ({
+      priceDifference,
+      changePercent,
+      lastAvailablePrice,
+    }),
+    [priceDifference, changePercent, lastAvailablePrice]
+  );
 };

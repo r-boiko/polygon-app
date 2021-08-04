@@ -9,6 +9,11 @@ const useStyles = makeStyles((theme: Theme) =>
         fontSize: "1.2rem",
       },
     },
+    extendIcon: {
+      cursor: "pointer",
+      margin: "0 auto",
+      display: "flex",
+    },
   })
 );
 

@@ -3,13 +3,13 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 const useGlobalStyles = makeStyles((theme: Theme) =>
   createStyles({
     dFlex: {
-      display: 'flex',
+      display: "flex",
     },
     fullWidth: {
-      width: '100%',
+      width: "100%",
     },
     hide: {
-      display: 'none',
+      display: "none",
     },
     purple: {
       backgroundColor: "#001458",
@@ -18,8 +18,8 @@ const useGlobalStyles = makeStyles((theme: Theme) =>
     resetSpacing: {
       margin: 0,
       padding: 0,
-    }
-  }),
+    },
+  })
 );
 
 export default useGlobalStyles;
